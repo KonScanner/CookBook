@@ -7,9 +7,7 @@ def solution(data, n):
     for i in data:
         count[i] += 1
 
-    result = [i for i in data if count[i] <= n]
-
-    return result
+    return [i for i in data if count[i] <= n]
 
 
 # >>> [1,4,7,10,56]
