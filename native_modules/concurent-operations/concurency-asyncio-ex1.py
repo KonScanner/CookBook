@@ -19,3 +19,8 @@ def send_async_website_event(count: int):
     loop.run_until_complete(asyncio.wait(tasks))
     loop.close()
     log.info(f"Total time taken: {time.time()-start}")
+
+# More on this type:
+# https://vivekanandxyz.wordpress.com/2017/09/09/realtime-events-using-tornado-and-rabbitmq/
+# https://pika.readthedocs.io/en/stable/examples/tornado_consumer.html
+# https://developer.ibm.com/depmodels/cloud/articles/cl-optimizepythoncloud2/
