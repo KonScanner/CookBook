@@ -1,6 +1,5 @@
 import boto3
 import os
-# import credentials as cr
 
 
 class S3:
@@ -39,6 +38,18 @@ class S3:
         for name in os.listdir(path):
             self._resource().meta.client.upload_file(
                 Filename=path+name, Bucket=bucket, Key=name)
+
+    def _download_file(self, bucket: str, bucket_path: str, local_path: str):
+        return self._resource().meta.client.download_file(bucket, bucket_path, local_path)
+
+    def _list_buckets(self):
+        response = self._client().list_buckets()
+        print('Existing buckets:')
+        buckets = []
+        for c, bucket in enumerate(response['Buckets']):
+            buckets.append(bucket)
+            print(f'  {bucket["Name"]}', c)
+        return buckets
 
     def _terminate(self, bucket):
         self._resource().Bucket(bucket).objects.all().delete()
