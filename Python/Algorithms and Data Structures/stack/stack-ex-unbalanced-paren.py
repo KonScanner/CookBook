@@ -15,10 +15,7 @@ def is_match(p1, p2):
         return True
     if p1 == "{" and p2 == "}":
         return True
-    if p1 == "[" and p2 == "]":
-        return True
-    else:
-        return False
+    return p1 == "[" and p2 == "]"
 
 
 def is_paren_balanced(paren_str):
@@ -30,18 +27,14 @@ def is_paren_balanced(paren_str):
         paren = paren_str[index]
         if paren in "({[":
             s.push(paren)
+        elif s.is_empty():
+            is_balanced = False
         else:
-            if s.is_empty():
+            top = s.pop()
+            if not is_match(top, paren):
                 is_balanced = False
-            else:
-                top = s.pop()
-                if not is_match(top, paren):
-                    is_balanced = False
         index += 1
-    if s.is_empty() and is_balanced:
-        return True
-    else:
-        return False
+    return bool(s.is_empty() and is_balanced)
 
 
 print(is_paren_balanced("()()"))

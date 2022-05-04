@@ -89,9 +89,7 @@ class LinkedList:
         return count
 
     def len_recursive(self, node):
-        if node is None:
-            return 0
-        return 1 + self.len_recursive(node.next)
+        return 0 if node is None else 1 + self.len_recursive(node.next)
 
     def swap_nodes(self, key_1, key_2):
         if key_1 == key_2:
@@ -127,9 +125,9 @@ class LinkedList:
 
     def print_helper(self, node, name):
         if node is None:
-            print(name + ": None")
+            print(f"{name}: None")
         else:
-            print(name + ":" + node.data)
+            print(f"{name}:{node.data}")
 
     def reverse_iterative(self):
         # Reversing pointers
@@ -164,14 +162,13 @@ class LinkedList:
         if not Q:
             return P
 
-        if P and Q:
-            if P.data <= Q.data:
-                S = P
-                P = S.next
-            else:
-                S = Q
-                Q = S.next
-            new_head = S
+        if P.data <= Q.data:
+            S = P
+            P = S.next
+        else:
+            S = Q
+            Q = S.next
+        new_head = S
 
         while P and Q:
             if P.data <= Q.data:
@@ -197,7 +194,7 @@ list_of_objects = ["A", "B", "C", "D", "E", "F", "H", "I"]
 list_of_numbers = [1, 5, 7, 9, 10, 2, 3, 4, 6, 8]
 
 
-for i in range(0, 4):
+for i in range(4):
     llist.append(list_of_numbers[i])
 
 for i in range(5, len(list_of_numbers)):

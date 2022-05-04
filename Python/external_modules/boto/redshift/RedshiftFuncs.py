@@ -34,13 +34,14 @@ class Redshift:
         cluster_creds = self._get_creds()
 
         try:
-            conn = pg.connect(
+            return pg.connect(
                 host=self.rs_host,
                 port=self.rs_port,
                 user=cluster_creds['DbUser'],
                 password=cluster_creds['DbPassword'],
-                database=self.db)
-            return conn
+                database=self.db,
+            )
+
 
         except pg.Error as e:
             print(f'Failed to open database connection!\n{e}')

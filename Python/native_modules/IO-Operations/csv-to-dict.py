@@ -7,7 +7,7 @@ def csv_to_dict(path: str, _newline: str) -> List[dict]:
         Can be easily modified to perform pandas-like read."""
     with open(path, newline=_newline) as csvfile:
         reader = csv.DictReader(csvfile)
-        return [row for row in reader]
+        return list(reader)
 
 
 # Example Read
@@ -20,9 +20,9 @@ def csv_to_dict_w(path: str, _newline: str, d: List[dict], fnames: List[str], _t
         Can be easily modified to perform pandas-like to_csv."""
     with open(path, _type, newline=_newline) as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fnames)
-        if header_ == True:
+        if header_:
             writer.writeheader()
-        for c, i in enumerate(d):
+        for i in d:
             _write_row(dictionary=i, w=writer)
 
 

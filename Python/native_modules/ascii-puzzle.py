@@ -8,8 +8,7 @@ def read_file(path: str) -> list:
         values = []
         for line in file:
             currentline = line.split(',')
-            for i in currentline:
-                values.append(int(i.replace(" ", "")))
+            values.extend(int(i.replace(" ", "")) for i in currentline)
     return values
 
 
@@ -22,9 +21,7 @@ def read_hidden_message(nums: list) -> str:
 
     Returns combined string!
     """
-    solution = []
-    for i in nums:
-        solution.append(chr(i))
+    solution = [chr(i) for i in nums]
     return ''.join(solution)
 
 

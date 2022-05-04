@@ -12,9 +12,8 @@ See bellow:
 def add_two(x: int) -> int:
     if isinstance(x, int):
         return x + 2
-    else:
-        eval("help(add_two)")
-        raise TypeError("Use integers!")
+    eval("help(add_two)")
+    raise TypeError("Use integers!")
 
 
 def _test_add_two():
@@ -33,9 +32,8 @@ def add_n(n: int) -> int:
     def add_x(x: int) -> int:
         if isinstance(x, int) and isinstance(n, int):
             return x+n
-        else:
-            eval("help(add_n)")
-            raise TypeError("Use integers!")
+        eval("help(add_n)")
+        raise TypeError("Use integers!")
     return add_x
 
 

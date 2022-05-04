@@ -15,10 +15,12 @@ if __name__ == "__main__":
         result_str = ""
         for c, i in enumerate(sys.argv[1:]):
             if c == 0:
-                result_str += "an " + i if i[0] in vowels else "a " + i
-            elif not c == (len(sys.argv)-2):
-                result_str += ", an " + i if i[0] in vowels else ", a " + i
+                result_str += f"an {i}" if i[0] in vowels else f"a {i}"
+            elif c != len(sys.argv) - 2:
+                result_str += f", an {i}" if i[0] in vowels else f", a {i}"
             else:
-                result_str += " and an " + \
-                    i if i[0] in vowels else " and a " + i
+                result_str += (
+                    " and an " + i if i[0] in vowels else f" and a {i}"
+                )
+
         print(f"Ahow, Captain, {result_str} of the landboard bow!")

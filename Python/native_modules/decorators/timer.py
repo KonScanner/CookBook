@@ -6,6 +6,6 @@ def timer(func):
         start = time.time()
         rv = func()
         total = time.time() - start
-        print("Time taken for func {}: {}".format(func.__name__, total))
+        print(f"Time taken for func {func.__name__}: {total}")
         return rv
     return wrapper
