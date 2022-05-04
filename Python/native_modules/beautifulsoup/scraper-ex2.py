@@ -5,13 +5,10 @@ url = 'https://scrapingclub.com/exercise/list_basic/?page=1'
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'lxml')
 items = soup.find_all('div', class_='col-lg-4 col-md-6 mb-4')
-count = 1
-for i in items:
+for count, i in enumerate(items, start=1):
     itemName = i.find('h4', class_='card-title').text.strip('\n')
     itemPrice = i.find('h5').text
-    print('{}: Price:{}, Item Name: {}'.format(count, itemPrice, itemName))
-    count += 1
-
+    print(f'{count}: Price:{itemPrice}, Item Name: {itemName}')
 pages = soup.find('ul', class_='pagination')
 urls = []
 links = pages.find_all('a', class_='page-link')
@@ -27,9 +24,7 @@ for i in urls:
     response = requests.get(newUrl)
     soup = BeautifulSoup(response.text, 'lxml')
     items = soup.find_all('div', class_='col-lg-4 col-md-6 mb-4')
-    count = 1
-    for i in items:
+    for count, i in enumerate(items, start=1):
         itemName = i.find('h4', class_='card-title').text.strip('\n')
         itemPrice = i.find('h5').text
-        print('{}: Price:{}, Item Name: {}'.format(count, itemPrice, itemName))
-        count += 1
+        print(f'{count}: Price:{itemPrice}, Item Name: {itemName}')

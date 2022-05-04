@@ -16,9 +16,7 @@ to help you sort by element of importance."""
 
 
 def find_example(val):
-    if val == 'example':
-        return 1
-    return len(val)
+    return 1 if val == 'example' else len(val)
 
 
 print(sorted(obj_list, key=find_example))

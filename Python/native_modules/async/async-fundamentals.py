@@ -17,13 +17,11 @@ total_compute_runtime = 0
 
 async def main():  # coroutine object
     global run_time, total_compute_runtime
-    tasks = []
-    for i, second in enumerate(iteration_times):
-        tasks.append(
-            asyncio.create_task(
-                sleeper(second, i=i)
-            )
-        )
+    tasks = [
+        asyncio.create_task(sleeper(second, i=i))
+        for i, second in enumerate(iteration_times)
+    ]
+
     results = await asyncio.gather(*tasks)
     print(results)
     for run_time_result in results:

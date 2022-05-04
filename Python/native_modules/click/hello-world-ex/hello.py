@@ -8,7 +8,7 @@ import click
 def say(string, repeat, out):
     """This script greets you!"""
     # out.write('test\n')
-    for x in range(repeat):
+    for _ in range(repeat):
         click.echo(f'Hello {string}!', file=out)
 
 

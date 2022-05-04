@@ -14,10 +14,7 @@ class CrowsNest:
         return str_.capitalize()
 
     def _vowelCheck(self, str_: str):
-        if str_[0] in self.vowels:
-            return self.an
-        else:
-            return self.a
+        return self.an if str_[0] in self.vowels else self.a
 
     def run(self, list_: List[str]):
         """
@@ -34,7 +31,7 @@ class CrowsNest:
             for c, i in enumerate(list_):
                 if c == 0:
                     result_str += f" {self._vowelCheck(i)} {self._cap(i)}"
-                elif not c == (len(list_)-2):
+                elif c != len(list_) - 2:
                     result_str += f", {self._vowelCheck(i)} {self._cap(i)}"
                 else:
                     result_str += f" and {self._vowelCheck(i)} {self._cap(i)}"

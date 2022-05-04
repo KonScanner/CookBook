@@ -20,17 +20,12 @@ def timer(function):
 
 @timer
 def vectorized(x, y):
-    c = np.dot(x, y)
-    return c
+    return np.dot(x, y)
 
 
 @timer
 def forLoopVersion(x, y, n):
-    c = 0
-    for i in range(n):
-        c += x[i]*y[i]
-
-    return c
+    return sum(x[i]*y[i] for i in range(n))
 
 
 time, result, func_name = vectorized(x, y)
